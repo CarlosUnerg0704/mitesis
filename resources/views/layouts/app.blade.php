@@ -1,5 +1,7 @@
 <?php 
- 
+
+
+
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,9 +63,6 @@
             @else
             <div class="form-group dropempresa col-sm-4">
                 <select class="form-control" placeholder="Empresa">                  
-
-                  
-                  
 
                 </select>
             </div>

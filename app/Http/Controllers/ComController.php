@@ -8,7 +8,10 @@ use DB;
 class ComController extends Controller
 {
     public function leer(){
-    	$leer = DB::selectOne("SELECT * FROM [192.168.1.105].[erpcom].[dbo].[usuario]");
+    	$leer = DB::select("select cab.SOPTYPE, cab.SOPNUMBE, 'J000000000', cab.CUSTNMBR, cab.DOCDATE, cab.SUBTOTAL, cab.TAXAMNT, cab.DOCAMNT
+			from [TWO].[dbo].[SOP30200] as cab
+			where  CAB.SOPTYPE = 3");
+    	
     	dd($leer);
     }
 }
