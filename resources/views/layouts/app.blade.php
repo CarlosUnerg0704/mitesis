@@ -1,3 +1,10 @@
+<?php 
+  $uid= DB::selectOne("select id from users where name =?",array(Auth::user()->name));
+  $pid= DB::selectOne("select id_maestra from permiso_empre where id_users =?",array($uid->id));
+  $sel = DB::selectOne("select nombre from maestra where id =?",array($pid->id_maestra));
+  $menzo=$sel->nombre;
+    
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +56,7 @@
                         {{ config('app.name', 'Laravel') }}
                     </a>
             </div>  
-            @if(Auth::user()->name == 'virginia')
+           @if(Auth::user()->name == 'sucarlos')
                 <div class="form-group dropempresa col-sm-4">
                 <select class="form-control" placeholder="Empresa">
                     <option>SuperUsuario</option>                    
@@ -57,13 +64,14 @@
             </div>
             @else
             <div class="form-group dropempresa col-sm-4">
-                <select class="form-control" placeholder="Empresa">
-                    <option>Empresa 1</option>
-                    <option>Empresa 2</option>
-                    <option>Empresa 3</option>
+                <select class="form-control" placeholder="Empresa">                  
+                    <option>
+                        {{$menzo}}
+                    </option>
+
                 </select>
             </div>
-            @endif 
+            @endif
             
 
            <ul class="nav navbar-nav navbar-right">
@@ -120,7 +128,7 @@
                             <a href="home"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
                         </li>
                         <li>
-                
+
 
                             <a href="#"><i class="fa fa-edit fa-fw"></i> Registro<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -154,6 +162,14 @@
                         <li>
                             <a href="{{route('usuarios')}}"><i class="fa fa-user fa-fw"></i> Usuarios</a>
                         </li>
+                        <li>
+                            <form name="Leer" id="Leer" action="{{route('leer')}}" method="POST">
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-primary">Leer</button>
+                            </form>
+
+                        </li>
+
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
