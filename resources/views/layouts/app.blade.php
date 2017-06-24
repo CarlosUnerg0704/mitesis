@@ -1,8 +1,15 @@
 <?php 
   $uid= DB::selectOne("select id from users where name =?",array(Auth::user()->name));
+<<<<<<< HEAD
   $pid= DB::selectOne("select id_maestra from permiso_empre where id_users =?",array($uid->id));
   $sel = DB::selectOne("select nombre from maestra where id =?",array($pid->id_maestra));
   $menzo=$sel->nombre;
+=======
+  $pid= DB::select("select id_maestra from permiso_empre where id_users =?",array($uid->id));
+  
+  $sel = DB::select("select nombre from maestra where id =?",array($pid->id_maestra));
+
+>>>>>>> 89c06846551214458f7c013fb260a33e3aa0b462
     
  ?>
 <!DOCTYPE html>
@@ -65,10 +72,18 @@
             @else
             <div class="form-group dropempresa col-sm-4">
                 <select class="form-control" placeholder="Empresa">                  
+<<<<<<< HEAD
                     <option>
                         {{$menzo}}
                     </option>
 
+=======
+                   @foreach($sel as $pos)
+                   <option>
+                       {{$pos->nombre}}
+                   </option>
+                   @endforeach   
+>>>>>>> 89c06846551214458f7c013fb260a33e3aa0b462
                 </select>
             </div>
             @endif

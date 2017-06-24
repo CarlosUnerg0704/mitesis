@@ -78,7 +78,7 @@
                             <label for="telefono" class="col-md-4 control-label">Telefono</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="telefono" value="{{ old('telefono') }}" required autofocus>
+                                <input id="name" type="number" class="form-control" name="telefono" value="{{ old('telefono') }}" required autofocus>
 
                               
                             </div>
@@ -89,7 +89,7 @@
                             <label for="cedula" class="col-md-4 control-label">Cedula</label>
 
                             <div class="col-md-6">
-                                <input id="cedula" type="text" class="form-control" name="cedula" value="{{ old('cedula') }}" required autofocus>
+                                <input id="cedula" type="number" class="form-control" name="cedula" value="{{ old('cedula') }}" required autofocus>
 
                             
                             </div>
