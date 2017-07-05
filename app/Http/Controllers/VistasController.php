@@ -7,6 +7,7 @@ use App\Http\Requests\RegistroEmpreRequest;
 use App\Maestra;
 use App\PermisoEmpre;
 use App\User;
+use App\Cabecera;
 use DB;
 use Session;
 use Redirect;
@@ -27,8 +28,8 @@ class VistasController extends Controller
         return view('morris');
     }
     public function historico(){
-        $users = User::all();
-        return view('historico')->with(['users'=>$users]);
+        $cabecera = Cabecera::all();
+        return view('historico')->with(['cabecera_doc'=>$cabecera]);
     }
     public function obligaciones(){
         $users = User::all();

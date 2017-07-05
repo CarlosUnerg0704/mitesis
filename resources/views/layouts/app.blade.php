@@ -1,6 +1,11 @@
 <?php 
-
-
+  $id_maestras = DB::select("select id_maestra from permiso_empre where id_users = ?", array(Auth::user()->id));
+  $i=0;
+ foreach($id_maestras as $maestra){    
+    $nom[$i]=DB::select("select nombre from maestra where id=? ",array($maestra->id_maestra));
+    $i = $i+1; 
+ }
+    $j=0
 
  ?>
 <!DOCTYPE html>
@@ -61,11 +66,23 @@
                 </select>
             </div>
             @else
-            <div class="form-group dropempresa col-sm-4">
-                <select class="form-control" placeholder="Empresa">                  
-
-                </select>
-            </div>
+            <form name="Leer" id="Leer" action="{{route('leer')}}" method="POST">
+            {{ csrf_field() }}
+                <div class="form-group{{ $errors->has('empresa') ? ' has-error' : '' }}">
+                    <div class="col-md-6">
+                        <select name="empresa" id="empresa" class="form-control">
+                            
+                                @foreach($nom as $e)
+                            <option value="{{$e[$j]->nombre}}">
+                                {{$e[$j]->nombre}}                       
+                            </option>
+                                 @endforeach
+                        </select>                               
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Leer</button>
+             </form>
+          
             @endif
             
 
@@ -77,7 +94,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->email }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
@@ -158,10 +175,7 @@
                             <a href="{{route('usuarios')}}"><i class="fa fa-user fa-fw"></i> Usuarios</a>
                         </li>
                         <li>
-                            <form name="Leer" id="Leer" action="{{route('leer')}}" method="POST">
-                                {{ csrf_field() }}
-                                <button type="submit" class="btn btn-primary">Leer</button>
-                            </form>
+
 
                         </li>
 

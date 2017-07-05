@@ -16,20 +16,29 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>                                        
-                                        <th>Nombre</th>
-                                        <th>Correo</th>                                        
-                                        <th>Telefono</th>
-                                        <th>Cedula</th>
-
+                                        <th>Tipo</th>
+                                        <th>Numero de Control</th>
+                                        <th>Numero de Documento</th>
+                                        <th>Rif Proveedor</th>
+                                        <th>Rif Cliente</th>
+                                        <th>Fecha</th>
+                                        <th>SubTotal</th>
+                                        <th>Impuesto</th>
+                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($users as $user)
+                                    @foreach($cabecera_doc as $cabecera)
                                     <tr class="gradeX">
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->email}}</td>
-                                        <td>{{$user->telefono}}</td>
-                                        <td>{{$user->cedula}}</td>
+                                        <td>{{$cabecera->tipo}}</td>
+                                        <td>{{$cabecera->nro_control}}</td>
+                                        <td>{{$cabecera->nro_doc}}</td>
+                                        <td>{{$cabecera->rif_proveedor}}</td>
+                                        <td>{{$cabecera->rif_cliente}}</td>
+                                        <td>{{$cabecera->fecha}}</td>
+                                        <td>{{$cabecera->subtotal}}</td>
+                                        <td>{{$cabecera->impuesto}}</td>
+                                        <td>{{$cabecera->total}}</td>
                                     </tr>
                                     @endforeach
                                     
